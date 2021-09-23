@@ -3,6 +3,8 @@ package com.example.spring_boot_jwt_phamngocnhuy.entity;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -25,10 +27,10 @@ public abstract class BaseEntity implements Serializable {
 
     private String deleted;
 
-    @CreatedDate
+    @CreationTimestamp
     private Date createdAt;
 
-    @LastModifiedDate
+    @UpdateTimestamp
     private Date updatedAt;
 
     private Long createdBy;
