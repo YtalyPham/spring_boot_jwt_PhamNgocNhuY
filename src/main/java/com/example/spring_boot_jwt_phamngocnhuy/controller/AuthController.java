@@ -36,28 +36,28 @@ public class AuthController {
         return userService.createUser(user);
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody User user) {
-
-        UserPrincipal userPrincipal =
-                userService.findByUsername(user.getUsername());
-
-        if (null == user || !new BCryptPasswordEncoder()
-                .matches(user.getPassword(), userPrincipal.getPassword())) {
-
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body("Account or password is not valid!");
-        }
-
-        Token token = new Token();
-        token.setToken(jwtUtil.generateToken(userPrincipal));
-
-        token.setTokenExpDate(jwtUtil.generateExpirationDate());
-        token.setCreatedBy(userPrincipal.getUserId());
-        tokenService.createToken(token);
-
-        return ResponseEntity.ok(token.getToken());
-    }
+//    @PostMapping("/login")
+//    public ResponseEntity<?> login(@RequestBody User user) {
+//
+//        UserPrincipal userPrincipal =
+//                userService.findByUsername(user.getUsername());
+//
+//        if (null == user || !new BCryptPasswordEncoder()
+//                .matches(user.getPassword(), userPrincipal.getPassword())) {
+//
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+//                    .body("Account or password is not valid!");
+//        }
+//
+//        Token token = new Token();
+//        token.setToken(jwtUtil.generateToken(userPrincipal));
+//
+//        token.setTokenExpDate(jwtUtil.generateExpirationDate());
+//        token.setCreatedBy(userPrincipal.getUserId());
+//        tokenService.createToken(token);
+//
+//        return ResponseEntity.ok(token.getToken());
+//    }
 }
 
 
