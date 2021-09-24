@@ -27,7 +27,9 @@ public class UserServiceImpl implements UserService {
         UserPrincipal userPrincipal = new UserPrincipal();
 
         if (null != user) {
+
             Set<String> authorities = new HashSet<>();
+
             if (null != user.getRoles())
 
                 user.getRoles().forEach(r -> {
@@ -40,6 +42,7 @@ public class UserServiceImpl implements UserService {
             userPrincipal.setUsername(user.getUsername());
             userPrincipal.setPassword(user.getPassword());
             userPrincipal.setAuthorities(authorities);
+
         }
 
         return userPrincipal;
